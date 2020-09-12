@@ -6,27 +6,35 @@ function die_roll()
 	return d
 end
 
-dice = {}
-low = 6
-total = 0
+overall=0
 
-for i=1,4 do
-	die_roll()
-	add (dice,d)
-	if d < low then
-		low = d
+print("rolling 4d6...")
+print("(dropped number in red)",8)
+for i=1,6 do
+	dice = {}
+	low = 6
+	total = 0
+
+	for i=1,4 do
+		die_roll()
+		add (dice,d)
+		if d < low then
+			low = d
+		end
 	end
+
+	del(dice,low)
+
+	for d in all(dice) do
+			total += d
+	end
+
+	overall += total
+	print(dice[1]..","..dice[2]..","..dice[3].." = "..total,6)
+	print(low,8)
 end
 
-del(dice,low)
-
-for d in all(dice) do
-		print(d)
-		total += d
-end
-
-print(low,8)
-print("total: "..total,6)
+print("total = "..overall,11)
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
